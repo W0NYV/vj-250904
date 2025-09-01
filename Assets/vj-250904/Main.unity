@@ -460,6 +460,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543266145}
   - component: {fileID: 543266144}
+  - component: {fileID: 543266146}
   m_Layer: 0
   m_Name: GlobalTimeManager
   m_TagString: Untagged
@@ -494,6 +495,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &543266146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543266143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9f4806169540828ff2fe0c3b74f724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _noteAssigns:
+  - ID: 113
+    OnReceived:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 543266144}
+          m_TargetAssemblyTypeName: W0NYV.vj250904.GlobalTimeManager, Assembly-CSharp
+          m_MethodName: Reset
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _controlChangeAssigns: []
 --- !u!1 &568654199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1146,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1611992153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1611992155}
+  - component: {fileID: 1611992154}
+  m_Layer: 0
+  m_Name: DeviceMidiReceiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1611992154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611992153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86acd36bb2714241903191c06c4132ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isDebug: 1
+--- !u!4 &1611992155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611992153}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710361126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,6 +1371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084008703}
   - component: {fileID: 2084008702}
+  - component: {fileID: 2084008704}
   m_Layer: 0
   m_Name: TapTempoSystem
   m_TagString: Untagged
@@ -1345,6 +1422,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084008704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084008701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9f4806169540828ff2fe0c3b74f724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _noteAssigns:
+  - ID: 112
+    OnReceived:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2084008702}
+          m_TargetAssemblyTypeName: W0NYV.vj250904.TapTempoSystem, Assembly-CSharp
+          m_MethodName: CalculateTempo
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _controlChangeAssigns: []
 --- !u!1 &2109464943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,5 +1513,6 @@ SceneRoots:
   - {fileID: 568654200}
   - {fileID: 543266145}
   - {fileID: 2084008703}
+  - {fileID: 1611992155}
   - {fileID: 1092263783}
   - {fileID: 405721351}
