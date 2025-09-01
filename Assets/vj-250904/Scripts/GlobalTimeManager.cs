@@ -9,6 +9,8 @@ namespace W0NYV.vj250904
 
         private float _bpm = 60f;
 
+        private static readonly int GlobalTimeID = Shader.PropertyToID("_GlobalTime");
+
         public void Reset(float v)
         {
             if (v == 0f) return;
@@ -23,6 +25,8 @@ namespace W0NYV.vj250904
         private void Update()
         {
             GlobalTime += Time.deltaTime * _bpm / 60f;
+            
+            Shader.SetGlobalFloat(GlobalTimeID, GlobalTime);
         }
     }
 }

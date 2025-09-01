@@ -119,6 +119,98 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &89819118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 89819120}
+  - component: {fileID: 89819119}
+  - component: {fileID: 89819121}
+  m_Layer: 0
+  m_Name: PanelGfxManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &89819119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89819118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84dcc8589d944a55a60bd5a53ed4687c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelMaterial: {fileID: 2100000, guid: ed9aefeba903a274fa3178a6e738c2e5, type: 2}
+--- !u!4 &89819120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89819118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &89819121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89819118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9f4806169540828ff2fe0c3b74f724, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _noteAssigns:
+  - ID: 56
+    OnReceived:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89819119}
+          m_TargetAssemblyTypeName: W0NYV.vj250904.PanelGfxManager, Assembly-CSharp
+          m_MethodName: SwitchToG001
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - ID: 57
+    OnReceived:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89819119}
+          m_TargetAssemblyTypeName: W0NYV.vj250904.PanelGfxManager, Assembly-CSharp
+          m_MethodName: SwitchToG002
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _controlChangeAssigns: []
 --- !u!1 &178882017
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80c313966a370534da0ab7833b63e706, type: 2}
+  - {fileID: 2100000, guid: 2d36ad6cf85b4f74ea75ee660d10ac06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,7 +372,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80c313966a370534da0ab7833b63e706, type: 2}
+  - {fileID: 2100000, guid: 8c2bce496876d4e4cb23f88dfdd4d028, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1282,7 +1374,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80c313966a370534da0ab7833b63e706, type: 2}
+  - {fileID: 2100000, guid: 8b202eb7ed0520c49bf3a3fd94b5234a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1512,6 +1604,7 @@ SceneRoots:
   - {fileID: 1710361127}
   - {fileID: 568654200}
   - {fileID: 543266145}
+  - {fileID: 89819120}
   - {fileID: 2084008703}
   - {fileID: 1611992155}
   - {fileID: 1092263783}

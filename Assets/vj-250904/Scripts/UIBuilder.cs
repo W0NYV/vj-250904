@@ -15,6 +15,7 @@ namespace W0NYV.vj250904
             return UI.Window("VJ 250904 v0.0.0",
                 UI.WindowLauncher<ApplicationSettings>(),
                 UI.WindowLauncher<TimeSystemUI>(),
+                UI.WindowLauncher<PanelGfxManager>(),
                 UI.Button("Save", Prefs.Save)    
             ).SetClosable(false);
         }
