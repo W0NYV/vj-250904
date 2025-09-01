@@ -17,5 +17,11 @@ namespace W0NYV.vj250904
                 _vSyncCount.CreateElement("VSync Count").RegisterValueChangeCallback(() => QualitySettings.vSyncCount = _vSyncCount)
             );
         }
+
+        private void Start()
+        {
+            Application.targetFrameRate = _targetFrameRate;
+            QualitySettings.vSyncCount = _vSyncCount;
+        }
     }
 }
