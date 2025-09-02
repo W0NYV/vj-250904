@@ -101,6 +101,99 @@ MonoBehaviour:
   receiverMotionRejection:
     m_OverrideState: 0
     m_Value: 1
+--- !u!114 &-5150945607036348003
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1bfcd0f0fa7b8468f281d6bbbaf320, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.12
+  xMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  yMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &-4021928839767215704
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1be1b6c95cd2e41b27903b9270817f, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 0
+  color:
+    m_OverrideState: 1
+    m_Value: {r: 0, g: 0, b: 0, a: 1}
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.4
+  smoothness:
+    m_OverrideState: 1
+    m_Value: 0.765
+  roundness:
+    m_OverrideState: 0
+    m_Value: 1
+  rounded:
+    m_OverrideState: 0
+    m_Value: 0
+  mask:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  opacity:
+    m_OverrideState: 0
+    m_Value: 1
+--- !u!114 &-3312134053683683609
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e2d32e2c7b0c418e030c3236d663a, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  quality:
+    m_OverrideState: 1
+    m_Value: 1
+  spectralLut:
+    m_OverrideState: 1
+    m_Value: {fileID: 0}
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.126
+  m_MaxSamples:
+    m_OverrideState: 1
+    m_Value: 6
 --- !u!114 &-848730355408761474
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -271,6 +364,9 @@ MonoBehaviour:
   - {fileID: 8662916039303724646}
   - {fileID: 1034962688461904516}
   - {fileID: 1773877355986417396}
+  - {fileID: -5150945607036348003}
+  - {fileID: -3312134053683683609}
+  - {fileID: -4021928839767215704}
 --- !u!114 &1034962688461904516
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -442,7 +538,7 @@ MonoBehaviour:
     m_Value: 10
   farFocusEnd:
     m_OverrideState: 1
-    m_Value: 11.5
+    m_Value: 14
   m_NearSampleCount:
     m_OverrideState: 1
     m_Value: 5

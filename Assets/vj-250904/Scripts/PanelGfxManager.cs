@@ -8,8 +8,8 @@ namespace W0NYV.vj250904
     {
         public enum Keyword
         {
-            G001,
-            G002
+            G001, G002, G003, G004,
+            G005, 
         }
         
         [SerializeField] private Material _panelMaterial;
@@ -19,8 +19,8 @@ namespace W0NYV.vj250904
         
         private static readonly Dictionary<int, string> _dictionary = new()
         {
-            { 0, "_G001" },
-            { 1, "_G002" },
+            { 0, "_G001" }, { 1, "_G002" }, { 2, "_G003" }, { 3, "_G004" },
+            { 4, "_G005" },
         };
 
         public Element CreateElement(LabelElement label)
@@ -45,7 +45,28 @@ namespace W0NYV.vj250904
             SwitchKeyword((int)Keyword.G002);
             _currentKeyword = Keyword.G002;
         }
+        
+        public void SwitchToG003(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G003);
+            _currentKeyword = Keyword.G003;
+        }
+        
+        public void SwitchToG004(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G004);
+            _currentKeyword = Keyword.G004;
+        }
 
+        public void SwitchToG005(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G005);
+            _currentKeyword = Keyword.G005;
+        }
+        
         private void SwitchKeyword(int id)
         {
             _panelMaterial.DisableKeyword(_dictionary[_currentId]);

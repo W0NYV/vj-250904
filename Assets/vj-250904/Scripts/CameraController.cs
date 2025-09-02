@@ -9,9 +9,8 @@ namespace W0NYV.vj250904
     {
         public enum CameraId
         {
-            C001,
-            C002,
-            C003
+            C001, C002, C003, C004,
+            C005
         }
         
         [SerializeField] private CinemachineCamera[] _cameras;
@@ -43,6 +42,20 @@ namespace W0NYV.vj250904
         {
             if (v == 0f) return;
             _cameraId = CameraId.C003;
+            SwitchCamera(_cameraId);
+        }
+        
+        public void SwitchToC004(float v)
+        {
+            if (v == 0f) return;
+            _cameraId = CameraId.C004;
+            SwitchCamera(_cameraId);
+        }
+        
+        public void SwitchToC005(float v)
+        {
+            if (v == 0f) return;
+            _cameraId = CameraId.C005;
             SwitchCamera(_cameraId);
         }
         

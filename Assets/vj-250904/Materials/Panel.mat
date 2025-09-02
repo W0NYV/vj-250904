@@ -35,6 +35,9 @@ Material:
     - _G002: 0
     - g001: 1
     - g002: 0
+    - g003: 0
+    - g004: 0
+    - g005: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
