@@ -143,4 +143,8 @@ float easeOutElastic(float x) {
     return x == 0.0 ? 0.0 : x == 1.0 ? 1.0 : pow(2.0, -10.0 * x) * sin((x * 10.0 - 0.75) * c4) + 1.0;
 }
 
+float getIntensity(float3 col) {
+    return dot(col, float3(0.299, 0.587, 0.114));
+}
+
 #endif

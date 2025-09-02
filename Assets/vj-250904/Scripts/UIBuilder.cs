@@ -12,6 +12,7 @@ namespace W0NYV.vj250904
         [SerializeField] private TimeSystemUI _timeSystemUI;
         [SerializeField] private PanelGfxManager _panelGfxManager;
         [SerializeField] private CameraController _cameraController;
+        [SerializeField] private PostEffector _postEffector;
         
         private RosettaUIRoot _rosettaUIRoot;
 
@@ -28,7 +29,8 @@ namespace W0NYV.vj250904
                     ),
                     _timeSystemUI.CreateElement(""),
                     _panelGfxManager.CreateElement(""),
-                    _cameraController.CreateElement("")
+                    _cameraController.CreateElement(""),
+                    _postEffector.CreateElement("")
                 )
             ).SetClosable(false);
         }
