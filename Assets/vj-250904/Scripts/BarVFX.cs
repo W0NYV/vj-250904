@@ -23,7 +23,8 @@ namespace W0NYV.vj250904
         public void SwitchActive(float v)
         {
             if (v == 0f) return;
-
+            
+            _isActive = !_isActive;
             _visualEffect.SetFloat("Rate", _isActive ? 10 : 0);
         }
     }
