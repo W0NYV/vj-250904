@@ -13,6 +13,8 @@ namespace W0NYV.vj250904
         [SerializeField] private PanelGfxManager _panelGfxManager;
         [SerializeField] private CameraController _cameraController;
         [SerializeField] private PostEffector _postEffector;
+        [SerializeField] private GlobalVolumeController _globalVolumeController;
+        [SerializeField] private BarVFX _barVFX;
         
         private RosettaUIRoot _rosettaUIRoot;
 
@@ -30,7 +32,9 @@ namespace W0NYV.vj250904
                     _timeSystemUI.CreateElement(""),
                     _panelGfxManager.CreateElement(""),
                     _cameraController.CreateElement(""),
-                    _postEffector.CreateElement("")
+                    _barVFX.CreateElement(""),
+                    _postEffector.CreateElement(""),
+                    _globalVolumeController.CreateElement("")
                 )
             ).SetClosable(false);
         }

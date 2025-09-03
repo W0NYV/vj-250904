@@ -11,6 +11,7 @@ namespace W0NYV.vj250904
         [SerializeField] private Material _sobelMaterial;
 
         private RenderTexture _tmp;
+
         private RenderTexture _sobelTmp;
 
         private bool _isXInvertActive;
@@ -63,7 +64,6 @@ namespace W0NYV.vj250904
         {
             _tmp = new RenderTexture(_source.width, _source.height, 0, RenderTextureFormat.ARGB32);
             _sobelTmp = new RenderTexture(_source.width / 4, _source.height / 4, 0, RenderTextureFormat.ARGB32);
-
         }
 
         private void Update()
@@ -77,6 +77,7 @@ namespace W0NYV.vj250904
 
         private void OnDestroy()
         {
+            _tmp.Release();
             _tmp.Release();
             _sobelTmp.Release();
         }
