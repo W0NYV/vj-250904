@@ -3,8 +3,6 @@ Shader "Hidden/Sobel"
     Properties
     {
         _MainTex ("tex2D", 2D) = "white" {}
-        
-        [Toggle(_Active)]Active("Active", Float) = 0
     }
     SubShader
     {
@@ -74,16 +72,13 @@ Shader "Hidden/Sobel"
             sampler2D _SobelTex;
             sampler2D _MainTex;
             float _GlobalTime;
+            float _ApplyValue;
 
             fixed4 frag (v2f_img i) : SV_Target
             {
-#if _Active 
                 float3 noise = cyclic(float3(i.uv * 3.0, floor(_GlobalTime * 8.0)), 2.0);
                 
-                return tex2D(_MainTex, i.uv) + tex2D(_SobelTex, i.uv + noise.xy * 0.03);
-#endif
-
-                return tex2D(_MainTex, i.uv);
+                return tex2D(_MainTex, i.uv) + tex2D(_SobelTex, i.uv + noise.xy * 0.03) * _ApplyValue;
             }
             ENDCG
         }

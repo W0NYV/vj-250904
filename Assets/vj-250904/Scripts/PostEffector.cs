@@ -14,7 +14,7 @@ namespace W0NYV.vj250904
         private RenderTexture _sobelTmp;
 
         private bool _isXInvertActive;
-        private bool _isSobelActive;
+        private float _sobelApplyValue;
 
         public Element CreateElement(LabelElement _)
         {
@@ -30,17 +30,11 @@ namespace W0NYV.vj250904
                         _xInvertmaterial.DisableKeyword("_Active");
                     }
                 }),
-                UI.Field("Sobel", () => _isSobelActive).RegisterValueChangeCallback(() =>
+                UI.Field("Sobel", () => _sobelApplyValue).RegisterValueChangeCallback(() =>
                 {
-                    if (_isSobelActive)
-                    {
-                        _sobelMaterial.EnableKeyword("_Active");
-                    }
-                    else
-                    {
-                        _sobelMaterial.DisableKeyword("_Active");
-                    }
+                    _sobelMaterial.SetFloat("_ApplyValue", _sobelApplyValue);
                 })
+
             );
         }
 
@@ -58,20 +52,11 @@ namespace W0NYV.vj250904
                 _xInvertmaterial.DisableKeyword("_Active");
             }
         }
-        
-        public void SwitchSobel(float v)
-        {
-            if (v == 0f) return;
-            _isSobelActive = !_isSobelActive;
 
-            if (_isSobelActive)
-            {
-                _sobelMaterial.EnableKeyword("_Active");
-            }
-            else
-            {
-                _sobelMaterial.DisableKeyword("_Active");
-            }
+        public void SetSobelApplyValue(float v)
+        {
+            _sobelApplyValue = v;
+            _sobelMaterial.SetFloat("_ApplyValue", _sobelApplyValue);
         }
         
         private void Start()
