@@ -143,8 +143,38 @@ float easeOutElastic(float x) {
     return x == 0.0 ? 0.0 : x == 1.0 ? 1.0 : pow(2.0, -10.0 * x) * sin((x * 10.0 - 0.75) * c4) + 1.0;
 }
 
-float getIntensity(float3 col) {
+float getIntensity(float3 col)
+{
     return dot(col, float3(0.299, 0.587, 0.114));
 }
 
+float3 hsv2rgb(float3 c)
+{
+    float4 K = float4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    float3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * lerp(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+// https://www.shadertoy.com/view/XtGGzG
+float3 inferno_quintic( float x )
+{
+    x = saturate( x );
+    float4 x1 = float4( 1.0, x, x * x, x * x * x ); // 1 x x2 x3
+    float4 x2 = x1 * x1.w * x; // x4 x5 x6 x7
+    return saturate( float3(
+        dot( x1.xyzw, float4( -0.027780558, +1.228188385, +0.278906882, +3.892783760 ) ) + dot( x2.xy, float2( -8.490712758, +4.069046086 ) ),
+        dot( x1.xyzw, float4( +0.014065206, +0.015360518, +1.605395918, -4.821108251 ) ) + dot( x2.xy, float2( +8.389314011, -4.193858954 ) ),
+        dot( x1.xyzw, float4( -0.019628385, +3.122510347, -5.893222355, +2.798380308 ) ) + dot( x2.xy, float2( -3.608884658, +4.324996022 ) ) ) );
+}
+
+float3 magma_quintic( float x )
+{
+    x = saturate( x );
+    float4 x1 = float4( 1.0, x, x * x, x * x * x ); // 1 x x2 x3
+    float4 x2 = x1 * x1.w * x; // x4 x5 x6 x7
+    return saturate( float3(
+        dot( x1.xyzw, float4( -0.023226960, +1.087154378, -0.109964741, +6.333665763 ) ) + dot( x2.xy, float2( -11.640596589, +5.337625354 ) ),
+        dot( x1.xyzw, float4( +0.010680993, +0.176613780, +1.638227448, -6.743522237 ) ) + dot( x2.xy, float2( +11.426396979, -5.523236379 ) ),
+        dot( x1.xyzw, float4( -0.008260782, +2.244286052, +3.005587601, -24.279769818 ) ) + dot( x2.xy, float2( +32.484310068, -12.688259703 ) ) ) );
+}
 #endif

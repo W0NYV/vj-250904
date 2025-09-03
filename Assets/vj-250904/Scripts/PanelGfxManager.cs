@@ -16,6 +16,8 @@ namespace W0NYV.vj250904
 
         private int _currentId = 0;
         private Keyword _currentKeyword = Keyword.G001;
+        private Vector3 _hsvColor;
+        private float _gradApplyValue;
         
         private static readonly Dictionary<int, string> _dictionary = new()
         {
@@ -23,15 +25,49 @@ namespace W0NYV.vj250904
             { 4, "_G005" },
         };
 
+        private static readonly int HSVColorID = Shader.PropertyToID("_HSVColor");
+        private static readonly int GradApplyValueID = Shader.PropertyToID("_GradApplyValue");
+
         public Element CreateElement(LabelElement label)
         {
-            return UI.Field("Current Panel GFX", () => _currentKeyword).RegisterValueChangeCallback(() =>
-            {
-                var id = (int)_currentKeyword;
-                SwitchKeyword(id);
-            });
+            return UI.Page(
+                UI.Field("Current Panel GFX", () => _currentKeyword).RegisterValueChangeCallback(() =>
+                {
+                    var id = (int)_currentKeyword;
+                    SwitchKeyword(id);
+                }),
+                UI.Field("HSV Color", () => _hsvColor).RegisterValueChangeCallback(() => _panelMaterial.SetVector(HSVColorID, _hsvColor)),
+                UI.Field("Grad Apply Value", () => _gradApplyValue).RegisterValueChangeCallback(() => _panelMaterial.SetFloat(GradApplyValueID, _gradApplyValue))
+            );
         }
 
+        public void SetHue(float v)
+        {
+            var current = _hsvColor;
+            _hsvColor = new Vector3(v, _hsvColor.y, _hsvColor.z);
+            _panelMaterial.SetVector("_HSVColor", _hsvColor);
+        }
+        
+        public void SetSaturation(float v)
+        {
+            var current = _hsvColor;
+            _hsvColor = new Vector3(_hsvColor.x, v, _hsvColor.z);
+            _panelMaterial.SetVector("_HSVColor", _hsvColor);
+        }
+        
+        public void SetValue(float v)
+        {
+            var current = _hsvColor;
+            _hsvColor = new Vector3(_hsvColor.x, _hsvColor.y, v);
+            _panelMaterial.SetVector("_HSVColor", _hsvColor);
+        }
+
+        public void SetGradApplyValue(float v)
+        {
+            _gradApplyValue = v;
+            _panelMaterial.SetFloat(GradApplyValueID, _gradApplyValue);
+        }
+        
         public void SwitchToG001(float v)
         {
             if (v == 0f) return;

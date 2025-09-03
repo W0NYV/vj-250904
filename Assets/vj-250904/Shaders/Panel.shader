@@ -36,6 +36,8 @@ Shader "CustomRenderTexture/Panel"
             float4      _Color;
             sampler2D   _MainTex;
             float _GlobalTime;
+            float3 _HSVColor;
+            float _GradApplyValue;
 
             float g001(float2 uv)
             {
@@ -146,8 +148,11 @@ Shader "CustomRenderTexture/Panel"
 #elif _G005
                 d = g005(uv);
 #endif
+
+                float3 nCol = inferno_quintic(clamp(1.0 - abs(cyclic(float3(uv * 4.0, floor(_GlobalTime*2.0)), 2.0).r), 0.075, 1.0));
+                float3 col = lerp(hsv2rgb(saturate(_HSVColor)), nCol, _GradApplyValue) * d;
                 
-                return float4(d.xxx, 1.0);
+                return float4(col, 1.0);
             }
             ENDCG
         }
