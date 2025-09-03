@@ -19,6 +19,14 @@ uint3 Pcg3d(float3 s) {
     return v;
 }
 
+float2 randomNormal(float2 p)
+{
+    float c = sqrt(-2.0 * log(p.x));
+    float r = 2.0 * p.y * acos(-1.0);
+
+    return float2(c * cos(r), c * sin(r));
+}
+
 float3 hash(float3 v)
 {
     float floatMax = 1.0/float(0xffffffffu);
@@ -52,6 +60,10 @@ float3 cyclic( float3 p, float pump )
 float2x2 rot(float r)
 {
     return float2x2(cos(r), -sin(r), sin(r), cos(r));
+}
+
+float2x2 skew(float v) {
+    return float2x2(1.0, tan(v), 0.0, 1.0);
 }
 
 // https://scrapbox.io/sayachang/GLSL%E3%82%92HLSL%E3%81%AB%E6%9B%B8%E3%81%8D%E6%8F%9B%E3%81%88%E3%82%8B
@@ -138,9 +150,15 @@ float easeInElastic(float x)
     ? 1.0 : -pow(2, 10.0 * x - 10.0) * sin((x * 10.0 - 10.75) * c4);
 }
 
-float easeOutElastic(float x) {
+float easeOutElastic(float x)
+{
     float c4 = (2.0 * acos(-1.0)) / 3.0;
     return x == 0.0 ? 0.0 : x == 1.0 ? 1.0 : pow(2.0, -10.0 * x) * sin((x * 10.0 - 0.75) * c4) + 1.0;
+}
+
+float easeOutExpo(float x)
+{
+    return x == 1.0 ? 1.0 : 1.0 - pow(2.0, - 10.0 * x);
 }
 
 float getIntensity(float3 col)
@@ -177,4 +195,60 @@ float3 magma_quintic( float x )
         dot( x1.xyzw, float4( +0.010680993, +0.176613780, +1.638227448, -6.743522237 ) ) + dot( x2.xy, float2( +11.426396979, -5.523236379 ) ),
         dot( x1.xyzw, float4( -0.008260782, +2.244286052, +3.005587601, -24.279769818 ) ) + dot( x2.xy, float2( +32.484310068, -12.688259703 ) ) ) );
 }
+
+float sdBox(float2 p, float2 b)
+{
+    float2 d = abs(p)-b;
+    return length(max(d,0.0)) + min(max(d.x,d.y),0.0);
+}
+
+float sdChamferBox(float2 p, float2 b)
+{
+    p = abs(p) - b;
+    p.y += 0.3;
+
+    const float k = 1.0-sqrt(2.0);
+    if( p.y<0.0 && p.y+p.x*k<0.0 ) return p.x;
+    if( p.x<p.y ) return (p.x+p.y)*sqrt(0.5);
+    return length(p);
+}
+
+float S(float x)
+{
+    float s = 16.0 / 1920.0;
+    return smoothstep(-s, s, x);
+}
+
+float eye(float2 uv, float time, float offset){
+
+    float openDeg = 4.5;
+
+    float PI = acos(-1.0);
+
+    float fsty = fract(uv.y) - 0.5;
+    float2 fst = float2(uv.x * PI * 2.0 - 0.5 * PI, fsty);
+    
+    float eyeOpen = (sin(time*2.0 + (acos(-1.0)*2.0*(offset/4.0))) + 1.0) / 2.0;
+    eyeOpen = 1.0 - pow(eyeOpen, 3.0);
+    
+    float col = (sin(fst.x) + 1.)/2.0;
+    float col2 = col* eyeOpen + fst.y*openDeg - 0.1;
+    col = col* eyeOpen - fst.y*openDeg - 0.1;
+    float cs1 = min(col - 0.1, col2- 0.1);
+    float cs2 = S(cs1);
+    col = S(min(col, col2));
+    //col = step(0.1, col);
+    float2 loc = float2(fract(fst.x/PI/2.0 + PI*2.0) - 0.53,fst.y);
+    
+    float lloc = length(loc);
+
+    float iris = abs((length(loc)*15.0) - 2.0);
+    float iris2 = abs((length(loc)*15.0) - 1.0);
+    float iris3 = length(loc)*9.0;
+    
+    iris *= iris2 * iris3;
+    
+    return min(col, lerp(1.0, S(-iris + 0.15), cs2));
+}
+
 #endif

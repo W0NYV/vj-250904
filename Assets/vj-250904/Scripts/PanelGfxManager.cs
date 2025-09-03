@@ -9,7 +9,8 @@ namespace W0NYV.vj250904
         public enum Keyword
         {
             G001, G002, G003, G004,
-            G005, 
+            G005, G006, G007, G008,
+            G009, G010, G011, G012
         }
         
         [SerializeField] private Material _panelMaterial;
@@ -22,7 +23,8 @@ namespace W0NYV.vj250904
         private static readonly Dictionary<int, string> _dictionary = new()
         {
             { 0, "_G001" }, { 1, "_G002" }, { 2, "_G003" }, { 3, "_G004" },
-            { 4, "_G005" },
+            { 4, "_G005" }, { 5, "_G006" }, { 6, "_G007" }, { 7, "_G008" },
+            { 8, "_G009" }, { 9, "_G010" }, { 10, "_G011" },{ 11, "_G012" },
         };
 
         private static readonly int HSVColorID = Shader.PropertyToID("_HSVColor");
@@ -45,21 +47,21 @@ namespace W0NYV.vj250904
         {
             var current = _hsvColor;
             _hsvColor = new Vector3(v, _hsvColor.y, _hsvColor.z);
-            _panelMaterial.SetVector("_HSVColor", _hsvColor);
+            _panelMaterial.SetVector(HSVColorID, _hsvColor);
         }
         
         public void SetSaturation(float v)
         {
             var current = _hsvColor;
             _hsvColor = new Vector3(_hsvColor.x, v, _hsvColor.z);
-            _panelMaterial.SetVector("_HSVColor", _hsvColor);
+            _panelMaterial.SetVector(HSVColorID, _hsvColor);
         }
         
         public void SetValue(float v)
         {
             var current = _hsvColor;
             _hsvColor = new Vector3(_hsvColor.x, _hsvColor.y, v);
-            _panelMaterial.SetVector("_HSVColor", _hsvColor);
+            _panelMaterial.SetVector(HSVColorID, _hsvColor);
         }
 
         public void SetGradApplyValue(float v)
@@ -101,6 +103,55 @@ namespace W0NYV.vj250904
             if (v == 0f) return;
             SwitchKeyword((int)Keyword.G005);
             _currentKeyword = Keyword.G005;
+        }
+        
+        public void SwitchToG006(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G006);
+            _currentKeyword = Keyword.G006;
+        }
+        
+        public void SwitchToG007(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G007);
+            _currentKeyword = Keyword.G007;
+        }
+        
+        public void SwitchToG008(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G008);
+            _currentKeyword = Keyword.G008;
+        }
+        
+        public void SwitchToG009(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G009);
+            _currentKeyword = Keyword.G009;
+        }
+        
+        public void SwitchToG010(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G010);
+            _currentKeyword = Keyword.G010;
+        }
+        
+        public void SwitchToG011(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G011);
+            _currentKeyword = Keyword.G011;
+        }
+        
+        public void SwitchToG012(float v)
+        {
+            if (v == 0f) return;
+            SwitchKeyword((int)Keyword.G012);
+            _currentKeyword = Keyword.G012;
         }
         
         private void SwitchKeyword(int id)
