@@ -20,7 +20,7 @@ namespace W0NYV.vj250904
 
         private Element CreateElement()
         {
-            return UI.Window("VJ 250904 v0.0.0",
+            return UI.Window("VJ 250904 v1.0.0",
                 UI.Column(
                     UI.WindowLauncher(
                         "Application Settings",
